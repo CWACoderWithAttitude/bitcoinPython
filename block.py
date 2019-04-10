@@ -16,13 +16,13 @@ class Block:
     def hash(self):
         h = hashlib.sha256()
         h.update(
-        str(self.blockNo).encode('utf-8')+
-        str(self.data).encode('utf-8')+
-        str(self.previousHash).encode('utf-8')+
-        str(self.timeStamp).encode('utf-8')+
-        str(self.nonce).encode('utf-8')
+		str(self.blockNo).encode('utf-8')+
+		str(self.data).encode('utf-8')+
+		str(self.previousHash).encode('utf-8')+
+		str(self.timeStamp).encode('utf-8')+
+		str(self.nonce).encode('utf-8')
         )
         return h.hexdigest()
 
     def __str__(self):
-        return str(self.blockNo) + '\n' + str(self.hash()) + '\n' + str(self.data) + '\n---------'
+        return '#:' + str(self.blockNo) + '\nhash: ' + str(self.hash()) + '\nprevious Block: ' + str(self.previousHash) + '\nData:' + str(self.data) + '\n---------'

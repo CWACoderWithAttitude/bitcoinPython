@@ -7,7 +7,7 @@ class BlockChain:
   block = Block('Genesis')
   head = block
   maxNone = 2**32
-  diff = 10
+  diff = 20 
   target = 2**(256-diff)
 
   def add(self, block):
@@ -21,12 +21,10 @@ class BlockChain:
       for n in range(self.maxNone):
           if int(block.hash(), 16) <= self.target:
             self.add(block)
-            print(block)
+            print("found block #" + str(block.blockNo))
             break
           else:
               block.nonce += 1
-              #if (block.nonce % 5) == 0:
-                #  print ("new nonce: {}".format(block.nonce))
 
   chain = []
 
@@ -34,7 +32,7 @@ class BlockChain:
 blockchain = BlockChain()
 
 print("Mining...")
-for n in range(10):
+for n in range(20):
     blockchain.mine(Block("Block #" + str(n+1)))
 input("<Press Any Key>")
 print("Display our lair...")
